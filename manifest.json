@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "Google Translation Collector",
+  "version": "1.0",
+  "description": "",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches":["*://translate.google.com/*", "*://translate.google.com/", "*://localhost/*"],
+      "js": [
+        "jquery-1.11.2.min.js",
+        "global.js",
+        "util.js",
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "scripts" : [
+      "jquery-1.11.2.min.js",
+      "global.js",
+      "util.js",
+      "background.js"
+    ]
+  },
+  "permissions": [
+        "webRequest",
+        "tabs",
+        "webNavigation",
+        "webRequestBlocking",
+        "contextMenus",
+        "http://*/*",
+        "https://*/*",
+        "storage",
+        "unlimitedStorage"
+    ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
